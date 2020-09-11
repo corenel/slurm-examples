@@ -7,7 +7,7 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 
-from tensorboard import SummaryWriter
+from tensorboardX import SummaryWriter
 writer = SummaryWriter('runs')
 
 
@@ -50,8 +50,8 @@ def train(args, model, device, train_loader, optimizer, epoch):
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
-j           niter = epoch*len(train_loader)+batch_idx
-            writer.add_scalar('Train/Loss', loss.data[0], niter)
+            niter = epoch * len(train_loader) + batch_idx
+            writer.add_scalar('Train/Loss', loss.item(), niter)
             if args.dry_run:
                 break
 

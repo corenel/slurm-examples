@@ -16,5 +16,5 @@ pwd
 # 进入Conda环境
 source ~/miniconda3/bin/activate py37
 # 运行程序
-tensorboard --logdir runs &
+tensorboard --logdir ./runs --host=0.0.0.0 &
 srun python3 main.py
